@@ -1,9 +1,16 @@
 import signal
 
-def display_message(s, numTicks=[0]):
-    numTicks[0] += 1
-    print(f"TIC {numTicks[0]}")
-    signal.alarm(1)
+numTicks = 0
+
+def display_message(sig, frame):
+        #print(f"{sig=}")
+        #print(f"{frame=}")
+        global numTicks
+
+        numTicks += 1
+        print(f"TIC {numTicks=}")
+        signal.alarm(1)
+
 
 def main():
     signal.signal(signal.SIGALRM, display_message)
